@@ -22,13 +22,15 @@ function LandingPage({ onStart }: LandingPageProps) {
             rekomendasi parfum yang paling sesuai untuk momen terbaikmu.
           </p>
         </div>
-        <button
-          type="button"
-          onClick={onStart}
-          className="rounded-full bg-ink px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-pearl shadow-premium transition hover:-translate-y-0.5 hover:bg-black focus:outline-none focus:ring-4 focus:ring-gold/25"
-        >
-          Mulai Tes Aroma
-        </button>
+        <div className="flex justify-center lg:justify-start">
+          <button
+            type="button"
+            onClick={onStart}
+            className="rounded-full bg-ink px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-pearl shadow-premium transition hover:-translate-y-0.5 hover:bg-black focus:outline-none focus:ring-4 focus:ring-gold/25"
+          >
+            Mulai Tes Aroma
+          </button>
+        </div>
       </div>
 
       <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[2rem] border border-white/70 bg-ink shadow-premium sm:max-w-md">
