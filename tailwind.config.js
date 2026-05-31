@@ -16,8 +16,8 @@ export default {
         soft: '0 14px 35px rgba(47, 35, 22, 0.1)',
       },
       fontFamily: {
-        display: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        body: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['PT Serif', 'Georgia', 'Cambria', 'serif'],
+        body: ['PT Serif', 'Georgia', 'Cambria', 'serif'],
       },
       keyframes: {
         glow: {
