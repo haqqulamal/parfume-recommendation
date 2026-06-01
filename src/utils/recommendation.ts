@@ -1,19 +1,29 @@
 import { perfumePriority, perfumes } from '../data/perfumes';
-import type { PerfumeId, QuizAnswer, RecommendationResult } from '../types';
+import { questions } from '../data/questions';
+import type { PerfumeId, QuizAnswer, RecommendationResult, ScoreMap } from '../types';
 
-const initialScores = (): Record<PerfumeId, number> => ({
-  'fresh-bloom': 0,
-  'elegant-night': 0,
-  'sweet-charm': 0,
-  'bold-essence': 0,
-  'soft-aura': 0,
+export const createEmptyScores = (): ScoreMap => ({
+  'swim-beach': 0,
+  'free-spirit': 0,
+  'tuberose-sedona': 0,
+  'musk-powder': 0,
+  'eros-desire': 0,
 });
 
+const getMaxPossibleScore = (perfumeId: PerfumeId): number => {
+  return questions.reduce((total, question) => {
+    const bestOptionScore = Math.max(...question.options.map((option) => option.scores[perfumeId] ?? 0));
+    return total + bestOptionScore;
+  }, 0);
+};
+
 export const getRecommendation = (answers: QuizAnswer[]): RecommendationResult => {
-  const scores = initialScores();
+  const scores = createEmptyScores();
 
   answers.forEach((answer) => {
-    scores[answer.perfumeId] += 1;
+    Object.entries(answer.scores).forEach(([perfumeId, score]) => {
+      scores[perfumeId as PerfumeId] += score ?? 0;
+    });
   });
 
   const winnerId = perfumePriority.reduce<PerfumeId>((currentBest, perfumeId) => {
@@ -21,11 +31,12 @@ export const getRecommendation = (answers: QuizAnswer[]): RecommendationResult =
   }, perfumePriority[0]);
 
   const perfume = perfumes.find((item) => item.id === winnerId) ?? perfumes[0];
-  const topCharacters = perfume.character.slice(0, 3).join(', ');
+  const maxPossibleScore = getMaxPossibleScore(winnerId);
+  const matchPercentage = maxPossibleScore > 0 ? Math.round((scores[winnerId] / maxPossibleScore) * 100) : 0;
 
   return {
     perfume,
     scores,
-    reason: `Berdasarkan pilihanmu, kamu cocok dengan aroma yang ${topCharacters}. ${perfume.name} cocok untuk ${perfume.suitableFor.toLowerCase()} Varian ini memberi kesan ${perfume.impression.toLowerCase()}`,
+    matchPercentage,
   };
 };

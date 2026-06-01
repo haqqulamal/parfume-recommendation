@@ -1,51 +1,47 @@
-import type { PerfumeVariant } from '../types';
+import type { PerfumeId, PerfumeVariant } from '../types';
 
 export const perfumes: PerfumeVariant[] = [
   {
-    id: 'fresh-bloom',
-    name: 'Fresh Bloom',
-    character: ['fresh', 'clean', 'citrus', 'aquatic'],
-    suitableFor: 'Aktivitas harian, kuliah, dan kegiatan outdoor.',
-    impression: 'Ceria, energik, dan bersih.',
+    id: 'swim-beach',
+    name: 'SWIM BY THE BEACH',
+    character: ['fresh citrus', 'clean', 'mewah', 'seger'],
     description:
-      'Aroma ringan yang terasa segar sejak semprotan pertama, cocok untuk tampil aktif tanpa terasa berlebihan.',
+      'Kamu memiliki jiwa bebas dan aktif. Karakter fresh citrus yang bersih dan mewah dari Swim by the Beach akan memberikan kesan segar seperti liburan di tepi pantai.',
   },
   {
-    id: 'elegant-night',
-    name: 'Elegant Night',
-    character: ['woody', 'amber', 'premium'],
-    suitableFor: 'Acara formal, meeting, dinner, dan momen spesial.',
-    impression: 'Elegan, dewasa, dan mewah.',
+    id: 'free-spirit',
+    name: 'FREE SPIRIT',
+    character: ['manis elegan', 'sedikit fresh dan clean', 'floral mewah'],
     description:
-      'Komposisi hangat dengan kesan premium untuk tampilan yang lebih matang, rapi, dan berkelas.',
+      'Kamu memiliki karakter yang ekspresif, feminin, dan suka menjadi pusat perhatian. Kombinasi aroma manis, floral, dan sentuhan fresh pada Free Spirit akan mencerminkan energi positif sekaligus kesan elegan yang mudah diingat.',
   },
   {
-    id: 'sweet-charm',
-    name: 'Sweet Charm',
-    character: ['vanilla', 'fruity', 'sweet'],
-    suitableFor: 'Hangout, date, dan kegiatan santai bersama teman.',
-    impression: 'Ramah, romantis, dan menyenangkan.',
+    id: 'tuberose-sedona',
+    name: 'TUBEROSE SEDONA',
+    character: ['creamy floral', 'classy', 'niche vibes'],
     description:
-      'Aroma manis yang tetap lembut, memberi nuansa friendly dan playful untuk momen dekat dengan orang lain.',
+      'Kamu menyukai kesan sophisticated dan berbeda dari kebanyakan orang. Tuberose Sedona menghadirkan creamy floral yang classy dengan nuansa niche yang terasa eksklusif dan berkelas.',
   },
   {
-    id: 'bold-essence',
-    name: 'Bold Essence',
-    character: ['spicy', 'musky', 'strong'],
-    suitableFor: 'Orang yang percaya diri, aktif, dan suka tampil.',
-    impression: 'Berani, tegas, dan powerful.',
+    id: 'musk-powder',
+    name: 'MUSK POWDER',
+    character: ['soft', 'calming', 'clean musk', 'cocok daily'],
     description:
-      'Karakter aroma yang kuat dan ekspresif untuk membantu membangun presence yang mudah diingat.',
+      'Kamu menghargai kesederhanaan dan kenyamanan. Musk Powder menawarkan aroma clean musk yang lembut, menenangkan, dan sangat mudah dipakai setiap hari tanpa terasa berlebihan.',
   },
   {
-    id: 'soft-aura',
-    name: 'Soft Aura',
-    character: ['floral', 'powdery', 'soft'],
-    suitableFor: 'Penyuka aroma lembut, nyaman, dan tidak menyengat.',
-    impression: 'Calm, clean, dan comforting.',
+    id: 'eros-desire',
+    name: 'EROS DESIRE',
+    character: ['fresh', 'woody', 'sweet'],
     description:
-      'Aroma halus dengan sentuhan floral powdery yang terasa tenang, bersih, dan mudah dipakai setiap hari.',
+      'Kamu memiliki karakter berani dan penuh percaya diri. Perpaduan fresh, woody, dan sweet pada Eros Desire memberikan aura maskulin yang menarik dan cocok untuk meninggalkan kesan kuat.',
   },
 ];
 
-export const perfumePriority = perfumes.map((perfume) => perfume.id);
+export const perfumePriority: PerfumeId[] = [
+  'swim-beach',
+  'musk-powder',
+  'free-spirit',
+  'tuberose-sedona',
+  'eros-desire',
+];

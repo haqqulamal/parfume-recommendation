@@ -1,4 +1,6 @@
-export type PerfumeId = 'fresh-bloom' | 'elegant-night' | 'sweet-charm' | 'bold-essence' | 'soft-aura';
+export type PerfumeId = 'swim-beach' | 'free-spirit' | 'tuberose-sedona' | 'musk-powder' | 'eros-desire';
+
+export type OptionId = 'A' | 'B' | 'C' | 'D';
 
 export interface CustomerData {
   name: string;
@@ -6,19 +8,19 @@ export interface CustomerData {
   gender: string;
 }
 
+export type ScoreMap = Record<PerfumeId, number>;
+
 export interface PerfumeVariant {
   id: PerfumeId;
   name: string;
   character: string[];
-  suitableFor: string;
-  impression: string;
   description: string;
 }
 
 export interface AnswerOption {
-  id: 'A' | 'B' | 'C' | 'D' | 'E';
+  id: OptionId;
   label: string;
-  perfumeId: PerfumeId;
+  scores: Partial<ScoreMap>;
 }
 
 export interface Question {
@@ -29,12 +31,12 @@ export interface Question {
 
 export interface QuizAnswer {
   questionId: number;
-  optionId: AnswerOption['id'];
-  perfumeId: PerfumeId;
+  optionId: OptionId;
+  scores: Partial<ScoreMap>;
 }
 
 export interface RecommendationResult {
   perfume: PerfumeVariant;
-  scores: Record<PerfumeId, number>;
-  reason: string;
+  scores: ScoreMap;
+  matchPercentage: number;
 }
