@@ -1,6 +1,6 @@
-# Find Your Signature Scent
+# Vibemist Perfume Recommendation
 
-Starter project website rekomendasi parfum untuk kebutuhan pameran kampus. Customer mengisi data singkat, menjawab quiz pilihan ganda, lalu mendapatkan rekomendasi varian parfum yang cocok.
+Website rekomendasi parfum Vibemist untuk kebutuhan pameran kampus. User mengisi data singkat, menjawab quiz pilihan ganda, lalu mendapatkan rekomendasi varian parfum Vibemist yang paling sesuai.
 
 ## Tech Stack
 
@@ -9,6 +9,7 @@ Starter project website rekomendasi parfum untuk kebutuhan pameran kampus. Custo
 - Vite
 - Tailwind CSS
 - Frontend only
+- Rule-based scoring
 
 ## Cara Install
 
@@ -24,18 +25,28 @@ npm run dev
 
 Buka URL lokal yang ditampilkan Vite di terminal.
 
+## Flow Aplikasi
+
+1. Welcome Page
+2. Input Data / Quiz Page
+3. Result / Recommendation Page
+
+Setelah quiz selesai, aplikasi menampilkan AI-style loading selama beberapa detik sebelum membuka hasil.
+
 ## Cara Kerja Rekomendasi
 
-Rekomendasi saat ini menggunakan rule-based scoring di frontend. Setiap jawaban menambah skor ke salah satu varian parfum:
+Rekomendasi menggunakan rule-based scoring di frontend. Setiap jawaban dapat menambah skor ke satu atau beberapa varian Vibemist:
 
-- A: Fresh Bloom
-- B: Elegant Night
-- C: Sweet Charm
-- D: Bold Essence
-- E: Soft Aura
+- SWIM BY THE BEACH
+- FREE SPIRIT
+- TUBEROSE SEDONA
+- MUSK POWDER
+- EROS DESIRE
 
-Varian dengan skor tertinggi menjadi hasil rekomendasi. Jika terjadi seri, sistem memakai prioritas: Fresh Bloom, Elegant Night, Sweet Charm, Bold Essence, lalu Soft Aura.
+Varian dengan skor tertinggi menjadi rekomendasi. Jika skor seri, sistem memakai prioritas: SWIM BY THE BEACH, MUSK POWDER, FREE SPIRIT, TUBEROSE SEDONA, lalu EROS DESIRE.
+
+Kecocokan persen dihitung dari skor varian terpilih dibanding skor maksimum yang mungkin untuk varian tersebut.
 
 ## Catatan AI Analysis
 
-Tampilan loading dibuat seperti proses AI analysis agar menarik saat dipakai di booth pameran. Tidak ada API AI, Gemini API, backend, database, login, dashboard admin, export data, atau deployment pada starter ini.
+Tampilan loading dibuat seperti proses AI analysis agar menarik saat digunakan di booth pameran. Tidak ada API AI, Gemini API, backend, database, login, dashboard admin, export data, atau deployment kompleks pada project ini.
