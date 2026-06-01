@@ -1,13 +1,12 @@
 import { useMemo, useState } from 'react';
-import CustomerForm from './components/CustomerForm';
-import LandingPage from './components/LandingPage';
 import LoadingAnalysis from './components/LoadingAnalysis';
 import QuizPage from './components/QuizPage';
 import ResultPage from './components/ResultPage';
+import WelcomePage from './components/WelcomePage';
 import { getRecommendation } from './utils/recommendation';
 import type { CustomerData, QuizAnswer } from './types';
 
-type Step = 'landing' | 'customer' | 'quiz' | 'loading' | 'result';
+type Step = 'welcome' | 'quiz' | 'loading' | 'result';
 
 const emptyCustomer: CustomerData = {
   name: '',
@@ -16,7 +15,7 @@ const emptyCustomer: CustomerData = {
 };
 
 function App() {
-  const [step, setStep] = useState<Step>('landing');
+  const [step, setStep] = useState<Step>('welcome');
   const [customer, setCustomer] = useState<CustomerData>(emptyCustomer);
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
 
@@ -25,30 +24,24 @@ function App() {
   const handleReset = () => {
     setCustomer(emptyCustomer);
     setAnswers([]);
-    setStep('landing');
+    setStep('welcome');
   };
 
   return (
     <main className="min-h-screen overflow-hidden bg-pearl text-ink">
-      <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(233,199,193,0.45),transparent_34%),linear-gradient(145deg,#fffaf3_0%,#f4eadc_52%,#f7f1e8_100%)]" />
-      <div className="mx-auto flex min-h-screen w-full max-w-6xl items-center px-4 py-6 sm:px-6 lg:px-8">
-        {step === 'landing' && <LandingPage onStart={() => setStep('customer')} />}
-        {step === 'customer' && (
-          <CustomerForm
-            initialData={customer}
-            onBack={() => setStep('landing')}
-            onSubmit={(data) => {
-              setCustomer(data);
-              setStep('quiz');
-            }}
-          />
-        )}
+      <div className="fixed inset-0 -z-10 bg-[linear-gradient(145deg,#fffaf3_0%,#f4eadc_50%,#efe0cc_100%)]" />
+      <div className="mx-auto flex min-h-screen w-full max-w-5xl items-center px-4 py-6 sm:px-6 lg:px-8">
+        {step === 'welcome' && <WelcomePage onStart={() => setStep('quiz')} />}
         {step === 'quiz' && (
           <QuizPage
-            answers={answers}
-            onBackToForm={() => setStep('customer')}
-            onChangeAnswers={setAnswers}
-            onFinish={() => setStep('loading')}
+            initialCustomer={customer}
+            initialAnswers={answers}
+            onBackToWelcome={() => setStep('welcome')}
+            onFinish={(nextCustomer, nextAnswers) => {
+              setCustomer(nextCustomer);
+              setAnswers(nextAnswers);
+              setStep('loading');
+            }}
           />
         )}
         {step === 'loading' && <LoadingAnalysis onComplete={() => setStep('result')} />}

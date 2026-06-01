@@ -6,13 +6,13 @@ interface LoadingAnalysisProps {
 
 const messages = [
   'AI sedang menganalisis preferensi aromamu...',
-  'Mencocokkan kepribadianmu dengan karakter aroma...',
+  'Mencocokkan kepribadianmu dengan karakter parfum Vibemist...',
   'Menyiapkan rekomendasi parfum terbaik untukmu...',
 ];
 
 function LoadingAnalysis({ onComplete }: LoadingAnalysisProps) {
   const [messageIndex, setMessageIndex] = useState(0);
-  const [progress, setProgress] = useState(12);
+  const [progress, setProgress] = useState(10);
 
   useEffect(() => {
     const messageTimer = window.setInterval(() => {
@@ -20,10 +20,10 @@ function LoadingAnalysis({ onComplete }: LoadingAnalysisProps) {
     }, 850);
 
     const progressTimer = window.setInterval(() => {
-      setProgress((value) => Math.min(value + 12, 100));
+      setProgress((value) => Math.min(value + 13, 100));
     }, 280);
 
-    const finishTimer = window.setTimeout(onComplete, 2700);
+    const finishTimer = window.setTimeout(onComplete, 2600);
 
     return () => {
       window.clearInterval(messageTimer);
@@ -33,18 +33,15 @@ function LoadingAnalysis({ onComplete }: LoadingAnalysisProps) {
   }, [onComplete]);
 
   return (
-    <section className="mx-auto w-full max-w-xl text-center">
-      <div className="animate-glow rounded-[1.75rem] border border-white/75 bg-white/75 p-7 shadow-premium backdrop-blur sm:p-10">
+    <section className="mx-auto w-full max-w-md text-center">
+      <div className="animate-glow rounded-[1.75rem] border border-white/75 bg-white/78 p-7 shadow-premium backdrop-blur sm:p-10">
         <div className="mx-auto mb-7 grid h-24 w-24 place-items-center rounded-full border border-gold/25 bg-champagne">
           <div className="h-14 w-14 animate-spin rounded-full border-4 border-ink/10 border-t-gold" />
         </div>
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-gold">AI style analysis</p>
-        <h2 className="min-h-20 font-display text-3xl leading-tight text-ink sm:text-4xl">{messages[messageIndex]}</h2>
-        <div className="mt-7 h-3 overflow-hidden rounded-full bg-champagne">
-          <div
-            className="h-full rounded-full bg-gradient-to-r from-gold via-blush to-sage transition-all duration-300"
-            style={{ width: `${progress}%` }}
-          />
+        <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-gold">Vibemist analysis</p>
+        <h2 className="min-h-24 font-display text-3xl font-bold leading-tight text-ink">{messages[messageIndex]}</h2>
+        <div className="mt-7 h-2 overflow-hidden rounded-full bg-champagne">
+          <div className="h-full rounded-full bg-gold transition-all duration-300" style={{ width: `${progress}%` }} />
         </div>
         <div className="mt-5 flex justify-center gap-2">
           {[0, 1, 2].map((item) => (
