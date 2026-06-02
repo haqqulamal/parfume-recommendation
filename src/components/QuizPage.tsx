@@ -9,8 +9,6 @@ interface QuizPageProps {
   onFinish: (customer: CustomerData, answers: QuizAnswer[]) => void;
 }
 
-const genderOptions = ['Cowo', 'Cewe', 'Lainnya', 'Tidak ingin menyebutkan'];
-
 function QuizPage({ initialCustomer, initialAnswers, onBackToWelcome, onFinish }: QuizPageProps) {
   const [customer, setCustomer] = useState<CustomerData>(initialCustomer);
   const [answers, setAnswers] = useState<QuizAnswer[]>(initialAnswers);
@@ -19,7 +17,7 @@ function QuizPage({ initialCustomer, initialAnswers, onBackToWelcome, onFinish }
   const isFormStep = currentIndex === -1;
   const question = isFormStep ? undefined : questions[currentIndex];
   const selectedAnswer = question ? answers.find((answer) => answer.questionId === question.id) : undefined;
-  const isCustomerValid = customer.name.trim() !== '' && customer.age.trim() !== '' && customer.gender.trim() !== '';
+  const isCustomerValid = customer.name.trim() !== '' && customer.age.trim() !== '';
   const totalSteps = questions.length + 1;
   const currentStep = currentIndex + 2;
   const progress = isFormStep ? 8 : (currentStep / totalSteps) * 100;
@@ -72,7 +70,6 @@ function QuizPage({ initialCustomer, initialAnswers, onBackToWelcome, onFinish }
         {
           name: customer.name.trim(),
           age: customer.age.trim(),
-          gender: customer.gender,
         },
         answers,
       );
@@ -126,23 +123,6 @@ function QuizPage({ initialCustomer, initialAnswers, onBackToWelcome, onFinish }
                   required
                   type="number"
                 />
-              </label>
-
-              <label className="block space-y-2">
-                <span className="text-sm font-bold text-ink/70">Gender</span>
-                <select
-                  value={customer.gender}
-                  onChange={(event) => updateCustomer('gender', event.target.value)}
-                  className="min-h-14 w-full rounded-2xl border border-ink/10 bg-pearl px-4 py-3 text-base outline-none transition focus:border-gold focus:ring-4 focus:ring-gold/15"
-                  required
-                >
-                  <option value="">Pilih gender</option>
-                  {genderOptions.map((gender) => (
-                    <option key={gender} value={gender}>
-                      {gender}
-                    </option>
-                  ))}
-                </select>
               </label>
             </div>
           </div>

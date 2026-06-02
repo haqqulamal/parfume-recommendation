@@ -5,7 +5,6 @@ export type OptionId = 'A' | 'B' | 'C' | 'D';
 export interface CustomerData {
   name: string;
   age: string;
-  gender: string;
 }
 
 export type ScoreMap = Record<PerfumeId, number>;

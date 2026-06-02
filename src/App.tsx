@@ -11,7 +11,6 @@ type Step = 'welcome' | 'quiz' | 'loading' | 'result';
 const emptyCustomer: CustomerData = {
   name: '',
   age: '',
-  gender: '',
 };
 
 function App() {
