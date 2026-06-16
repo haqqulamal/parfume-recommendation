@@ -37,13 +37,13 @@ Setelah quiz selesai, aplikasi menampilkan AI-style loading selama beberapa deti
 
 Rekomendasi menggunakan rule-based scoring di frontend. Setiap jawaban dapat menambah skor ke satu atau beberapa varian Vibemist:
 
-- SWIM BY THE BEACH
-- FREE SPIRIT
-- TUBEROSE SEDONA
-- MUSK POWDER
-- EROS DESIRE
+- Sky Rush
+- Dark Prestige
+- Moon Petals
+- Rose Whisper
+- Calm Breeze
 
-Varian dengan skor tertinggi menjadi rekomendasi. Jika skor seri, sistem memakai prioritas: SWIM BY THE BEACH, MUSK POWDER, FREE SPIRIT, TUBEROSE SEDONA, lalu EROS DESIRE.
+Varian dengan skor tertinggi menjadi rekomendasi. Jika skor seri, sistem memakai prioritas: Sky Rush, Rose Whisper, Dark Prestige, Moon Petals, lalu Calm Breeze.
 
 Kecocokan persen dihitung dari skor varian terpilih dibanding skor maksimum yang mungkin untuk varian tersebut.
 
